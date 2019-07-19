@@ -40,7 +40,7 @@
        <br>
        <a class="btn btn-default btn-lg showcase-btn" onclick="getLocation()">Ubicación</a>
             <p id="demo"></p>
-       <a class="btn btn-default btn-lg showcase-btn" href = "#showcase">Siguiente</a>
+       <a class="btn btn-default btn-lg showcase-btn" onclick="inMuseum(position)" href= "#showcase" id="botoninicio">Inicio</a>
             <p id="demo"></p>
       </div>
     </header>
@@ -211,7 +211,22 @@ function showPosition(position) {
     x.innerHTML="Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
-</script>
 
+var latitudeMuseum = 19.8693185
+var longitudeMuseum = -98.0271064
+
+function inMuseum(position) {
+	var x = getElementById("botoninicio");
+	var dist = Math.abs(((latitudeMuseum - position.coords.latitude) ** 2) + ((longitudeMuseum - position.coords.longitude) ** 2) ** .5)
+	if (dist < .000010) {
+		//Boton de inicio
+		x.innerHTML("Estás dentro del acuario")
+
+
+	} else {
+		x.innerHTML("No estás aún dentro del museo-acuario.");
+	}
+}
+</script>
 </body>
 </html>
